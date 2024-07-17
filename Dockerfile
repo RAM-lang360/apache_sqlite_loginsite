@@ -17,4 +17,7 @@ RUN a2enmod rewrite
 EXPOSE 80
 
 # Apacheをフォアグラウンドで起動
-CMD ["apache2-foreground"]
+CMD ["apache2-foreground","apt update","apt install sqlite3"]
+
+
+#docker container run -d -p 80:80 --name apache_sql -v /home/ryomoriya/Documents/apache_web_loginsite/src/:/var/www/html/ apache_sql:latest
