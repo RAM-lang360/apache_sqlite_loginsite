@@ -2,6 +2,7 @@
 function check_db($username,$password){
     $error=NULL;
     $url=NULL;
+    $status=NULL;
     $id_db=new SQLite3("id.db");
     if (!$id_db){
         die("データベースに接続できませんでした");
@@ -19,13 +20,19 @@ function check_db($username,$password){
     $row=$result->fetchArray(SQLITE3_ASSOC);
     
     if(!$row){
+        $status="error";
         $error="usernameかpasswordが間違っています";
     }else{
+        $status="success";
         $url=$row["url"];
-        echo "$url";
     }
     
-
+    $response=[
+        "status"=>$status,
+        "re_url"=>$url,
+        "error"=>$error
+    ];
+    echo json_encode($response);
 };
 
 
