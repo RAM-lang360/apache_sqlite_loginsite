@@ -13,7 +13,8 @@ try {
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             username VARCHAR(50) NOT NULL UNIQUE,
             password VARCHAR(50) NOT NULL,
-            url VARCHAR(100) NOT NULL
+            url VARCHAR(100) NOT NULL,
+            session VARHAR(100)
         )
     ";
 

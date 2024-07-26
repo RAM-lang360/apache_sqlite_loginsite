@@ -19,5 +19,6 @@ EXPOSE 80
 # Apacheをフォアグラウンドで起動
 CMD ["apache2-foreground","apt update","apt install sqlite3"]
 
-
+#id.dbに書き込み権限
+#すべての実行権限の管理は実装段階になったらやります
 #docker container run -d -p 80:80 --name apache_sql -v /home/ryomoriya/Documents/apache_web_loginsite/src/:/var/www/html/ apache_sql:latest
