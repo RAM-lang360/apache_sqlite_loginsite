@@ -1,6 +1,6 @@
 <?php
-function logout(){
 // セッションの終了
+session_start();
 session_unset(); // セッション変数を全て削除
 session_destroy(); // セッション自体を破棄
 
@@ -16,5 +16,5 @@ setcookie(session_name(), '', time() - 42000,
 // クッキー削除の確認メッセージやリダイレクト
 echo "ログアウトしました";
 // header('Location: /login.php'); // ログアウト後にリダイレクトする場合
-}
+
 ?>

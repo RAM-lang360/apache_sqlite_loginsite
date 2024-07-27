@@ -74,7 +74,6 @@ function first_session_check($username,$password){
 function session_check(){
     $error = NULL;
     $status = NULL;
-    $status = NULL;
     $re_url=NULL;
     //cookieを取得する
     $db_path = "/var/www/html/back_end/db/id.db";
@@ -104,9 +103,45 @@ function session_check(){
     ];
     return $response;
 }
-function insert_db($username, $password) {
-    // insert_db関数の内容をここに追加してください
-}
+function signin_db($username, $password) {
+    $error = null;
+    $status = null;
+    $db_path = "/var/www/html/back_end/db/id.db";
+    
+    if (!file_exists($db_path)) {
+        die("データベースファイルが見つかりません");
+    }
 
+    $id_db = new SQLite3($db_path);
+    if (!$id_db) {
+        die("データベースに接続できませんでした");
+    }
+
+    $query = "INSERT INTO user (username, password, url) VALUES (:username, :password, '/back_end/userpage/second.php')";
+    $stmt = $id_db->prepare($query);
+    $stmt->bindValue(":username", $username, SQLITE3_TEXT);
+    $stmt->bindValue(":password", $password, SQLITE3_TEXT);
+
+    // エラーレポートを抑制
+    $result = @$stmt->execute();
+    
+    if ($result === false) {
+        $errormessage = $id_db->lastErrorMsg();
+        $status = "error";
+        if (strpos($errormessage, "UNIQUE constraint failed: user.username") !== false) {
+            $error = "そのユーザーネームはすでに使用されています";
+        } else {
+            $error = "不正なサインインを感知しました";
+        }
+    } else {
+        $status = "success";
+    }
+
+    $response = [
+        "status" => $status,
+        "error" => $error
+    ];
+    return $response;
+}
 
 ?>
