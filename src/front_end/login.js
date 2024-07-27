@@ -38,29 +38,4 @@ document.addEventListener('DOMContentLoaded', (event) => {
             });
         });
     }
-
-    var logout_button = document.getElementById('logout_button');
-    if (logout_button) {
-        console.log("Logout button found"); // デバッグ用ログ
-        logout_button.addEventListener('click', async function(event) {
-            event.preventDefault();
-            console.log("Logout button clicked"); // デバッグ用ログ
-            var url = "/back_end/logout.php";
-            fetch(url, {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json"
-                },
-            })
-            .then(response => response.json())
-            .then(json => {
-                window.location.href = "/front_end/login.html";
-            })
-            .catch(e => {
-                console.error(e);
-            });
-        });
-    } else {
-        console.log("Logout button not found"); // デバッグ用ログ
-    }
 });
