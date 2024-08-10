@@ -1,9 +1,6 @@
 document.addEventListener('DOMContentLoaded', (event) => {
-    console.log("DOM fully loaded and parsed"); // デバッグ用ログ
-
     var button = document.getElementById('button');
     if (button) {
-        console.log("Login button found"); // デバッグ用ログ
         button.addEventListener('click', async function(event) {
             event.preventDefault();
             var username = document.getElementById("username").value;
@@ -24,11 +21,13 @@ document.addEventListener('DOMContentLoaded', (event) => {
             })
             .then(response => response.json())
             .then(json => {
+                console.log("test");
                 if (json.status == "success") {
                     window.location.href = json.re_url;
                 } else if (json.status == "error") {
-                    console.log("error");
-                    window.location.href = "logout.html";
+                    console.log("ログインに失敗しました");
+                    const content = document.getElementById('error');
+                    content.innerHTML = "ログインに失敗しました";
                 } else {
                     console.log("Unauthorized access confirmed");
                 }

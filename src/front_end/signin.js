@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', (event) => {
     console.log("DOM fully loaded and parsed"); // デバッグ用ログ
-
+z
     var button = document.getElementById('button');
     if (button) {
         console.log("Login button found"); // デバッグ用ログ

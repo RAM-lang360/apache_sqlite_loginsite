@@ -4,7 +4,8 @@ if (!isset($_COOKIE['PHPSESSID'])) {
     header('Location: /front_end/login.html'); // 認証されていない場合のリダイレクト
     exit;
 }else{
-    $response=session_check();
+    $curent_path="/back_end/user_page/first.php";
+    $response=session_check($curent_path);
     if(!$response["status"]=="success"){
         header("Location:/front_end/login.html");
     exit();
@@ -12,4 +13,4 @@ if (!isset($_COOKIE['PHPSESSID'])) {
 }
 ?>
 <!-- 認証されたユーザーに表示されるコンテンツ -->
-<h1>Welcome to the authenticated area!</h1>
+<h1>First</h1>
