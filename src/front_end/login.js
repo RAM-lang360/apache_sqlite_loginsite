@@ -26,8 +26,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
                     window.location.href = json.re_url;
                 } else if (json.status == "error") {
                     console.log("ログインに失敗しました");
-                    const content = document.getElementById('error');
-                    content.innerHTML = "ログインに失敗しました";
+                    document.getElementById('error').innerHTML = "Incorrect email address or Passward";
+                    document.getElementById('error').style.color = "red";
                 } else {
                     console.log("Unauthorized access confirmed");
                 }

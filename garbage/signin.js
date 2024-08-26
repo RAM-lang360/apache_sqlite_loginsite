@@ -28,6 +28,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
                     document.getElementById('result').style.color = "green";
                     window.location.href = "login.html";
                 } else if (json.status == "error") {
+                    console.log("変化あり");
+                    console.log("error=",json.error);
                     document.getElementById('result').innerHTML = json.error;
                     document.getElementById('result').style.color = "red";
                 } else {

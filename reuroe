@@ -12,19 +12,10 @@ COPY src/ /var/www/html/
 
 # Apacheの設定を適用
 RUN a2enmod rewrite
-# 権限の付与
-RUN groupadd -r webadmin && usermod -aG webadmin www-data
 
-RUN useradd -m -G webadmin ryomoriya
 
-RUN chown -R ryomoriya:webadmin front_end && chown -R ryomoriya:webadmin back_end
 # ポート80を公開
 EXPOSE 80
 
 # Apacheをフォアグラウンドで起動
 CMD ["apache2-foreground","apt update","apt install sqlite3"]
-
-#id.dbに書き込み権限
-#すべての実行権限の管理は実装段階になったらやります
-#開く際にback_endファイルにwww-dataのパーミッションを付与する必要がある
-#docker container run -d -p 80:80 --name apache_sql -v /home/ryomoriya/Documents/apache_web_loginsite/src/:/var/www/html/ apache_sql:latest
