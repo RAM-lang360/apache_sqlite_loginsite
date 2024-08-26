@@ -1,13 +1,15 @@
 document.addEventListener('DOMContentLoaded', (event) => {
+    console.log("DOM fully loaded and parsed"); // デバッグ用ログ
     var button = document.getElementById('button');
     if (button) {
+        console.log("Login button found"); // デバッグ用ログ
         button.addEventListener('click', async function(event) {
             event.preventDefault();
             var username = document.getElementById("username").value;
             var password = document.getElementById("password").value;
             console.log("username", username);
             console.log("password", password);
-            var url = "/back_end/login.php";
+            var url = "/back_end/signin.php";
 
             fetch(url, {
                 method: "POST",
@@ -21,13 +23,15 @@ document.addEventListener('DOMContentLoaded', (event) => {
             })
             .then(response => response.json())
             .then(json => {
-                console.log("test");
                 if (json.status == "success") {
-                    window.location.href = json.re_url;
+                    document.getElementById('result').innerHTML = "Success sign in";
+                    document.getElementById('result').style.color = "green";
+                    window.location.href = "login.html";
                 } else if (json.status == "error") {
-                    console.log("ログインに失敗しました");
-                    document.getElementById('error').innerHTML = "Incorrect email address or Passward";
-                    document.getElementById('error').style.color = "red";
+                    console.log("変化あり");
+                    console.log("error=",json.error);
+                    document.getElementById('result').innerHTML = json.error;
+                    document.getElementById('result').style.color = "red";
                 } else {
                     console.log("Unauthorized access confirmed");
                 }
@@ -36,5 +40,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 console.error(e);
             });
         });
+    }else{
+        console.log("button ない")
     }
 });

@@ -11,12 +11,17 @@ if ($data === null) {
     exit;
 }
 
-// データを処理
-$username = $data['username'];
-$password = $data['password'];
-// レスポンスを返す
+$db_path = "/var/www/html/back_end/db/id.db";
+if (!file_exists($db_path)) {
+    die("データベースファイルが見つかりません");
+}
 
-$response=check_db($username,$password);
+$id_db = new SQLite3($db_path);
+if (!$id_db) {
+    die("データベースに接続できませんでした");
+}
+//dbfunction.phpのセッション確認を使う
+$response=session_check($id_db);
 // Content-Typeを設定してJSONレスポンスを出力
 header('Content-Type: application/json');
 echo json_encode($response);

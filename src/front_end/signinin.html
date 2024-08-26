@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>Amazon サインイン</title>
+    <link rel="stylesheet" href="signin.css">
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="amazon.png" alt="Amazon Logo",id="logo">
+        </div>
+        <div class="form-container">
+            <h1>サインイン</h1>
+            <form id="signin-form">
+                <div class="form-group">
+                    <label for="username">Eメールまたは携帯電話番号</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">パスワード</label>
+                    <input type="password" id="password" name="password" required>
+                    <a href="#" class="forgot-password">パスワードを忘れた場合</a>
+                </div>
+                <button type="submit" id="button" class="signin-button">サインイン</button>
+            </form>
+            <div class="divider">
+                <h5>初めてご利用ですか？</h5>
+            <div id="result"></div>
+        </div>
+    </div>
+    <script src="signin.js"></script>
+</body>
+</html>
