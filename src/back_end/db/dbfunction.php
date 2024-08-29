@@ -1,11 +1,7 @@
 <?php
 function check_db($username, $password) {
     $response=NULL;
-    //if(isset($_COOKIE["session_id"])){
-        //$response=session_check();
-    //}else{
         $response=first_session_check($username,$password);
-    //}
     return $response;
 }
 
@@ -56,19 +52,6 @@ function first_session_check($username,$password){
         "re_url" => $re_url,
         "error" => $error
     ];
-
-    // // ログを書く
-    // $de_error = $id_db->lastErrorMsg();
-    // $today = date("Y-m-d H:i:s");
-    // $log_path = "/var/www/html/back_end/db/dblog.csv";
-    // $fp = fopen($log_path, "a"); // 追記モードに変更
-    // if ($fp) {
-    //     fwrite($fp, "$today,$status,$re_url,$de_error\n");
-    //     fclose($fp);
-    // } else {
-    //     error_log("ログファイルのオープンに失敗しました: $log_path");
-    // }
-
     return $response;
 }
 function session_check($url){
