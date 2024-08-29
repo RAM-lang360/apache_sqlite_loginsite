@@ -21,11 +21,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
             })
             .then(response => response.json())
             .then(json => {
-                console.log("test");
                 if (json.status == "success") {
                     window.location.href = json.re_url;
                 } else if (json.status == "error") {
-                    console.log("ログインに失敗しました");
                     document.getElementById('error').innerHTML = "Incorrect email address or Passward";
                     document.getElementById('error').style.color = "red";
                 } else {
