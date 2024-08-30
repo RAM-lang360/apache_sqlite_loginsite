@@ -26,8 +26,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 } else if (json.status == "error") {
                     document.getElementById('error').innerHTML = "Incorrect email address or Passward";
                     document.getElementById('error').style.color = "red";
-                } else {
-                    console.log("Unauthorized access confirmed");
                 }
             })
             .catch(e => {

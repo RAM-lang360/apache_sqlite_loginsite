@@ -57,7 +57,6 @@ function first_session_check($username,$password){
 function session_check($url){
     $error = NULL;
     $status = NULL;
-    $re_url=NULL;
     //cookieを取得する
     $db_path = "/var/www/html/back_end/db/id.db";
     if (!file_exists($db_path)) {
