@@ -17,7 +17,7 @@ RUN groupadd -r webadmin && usermod -aG webadmin www-data;
 
 RUN useradd -m -G webadmin your username
 
-RUN chown -R your username:webadmin front_end && chown -R ryomoriya:webadmin back_end
+RUN chown -R your username:webadmin front_end && chown -R your username:webadmin back_end
 # ポート80を公開
 EXPOSE 80
 
