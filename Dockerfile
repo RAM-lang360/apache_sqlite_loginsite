@@ -9,6 +9,8 @@ COPY apache-config/000-default.conf /etc/apache2/sites-available/000-default.con
 
 # ソースコードをApacheのドキュメントルートにコピー
 COPY src/ /var/www/html/
+#SQLite3機能の追加
+RUN apt-get update && apt-get install -y sqlite3
 
 # Apacheの設定を適用
 RUN a2enmod rewrite
