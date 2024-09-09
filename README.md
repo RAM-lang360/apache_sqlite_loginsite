@@ -54,8 +54,7 @@ sqlite3 back_end/db/id.db
 #### Login認証
 ![login例](readmeimg/login例.gif)
 #### Signin認証
-
-#### Cookieの発行とサイトのリダイレクト
+![signin例](readmeimg/signin例.gif)
 
 
 ## 学んだこと
