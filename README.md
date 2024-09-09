@@ -26,6 +26,8 @@ Docker仮想環境でのApacheによるセキュアなログインサイト。
 2. Dockerfileのyour usernameに自身のユーザーネームを設定
 3. 下記のコマンドを実行  
 ``` Linux
+docker image build -t apache_sql:latest .
+
 docker container run -d -p 任意のポート番号:80 --name apache_sql -v 絶対パス/src/:/var/www/html/ apache_sql:latest
 ```
 4. 指定ポートにアクセス
