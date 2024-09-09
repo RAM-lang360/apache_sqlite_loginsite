@@ -20,9 +20,9 @@ Docker仮想環境でのApacheによるセキュアなログインサイト。
 7. ログイン後のユーザーファイルではクッキーによる権限の確認を行う。
 8. ログイン、サインイン、データーベース操作の三項目でファイルを分割して作成する。
 9. ルート下にapache環境確認用conf.phpを配置する。  
-:::note alert
-現在http通信のためgoogleのエラーが起きる可能性があります
-:::
+
+注意:現在http通信のためgoogleのエラーが起きる可能性があります
+
 ## 導入方法
 1. [Dockerをインストールする](https://docs.docker.jp/desktop/install/windows-install.html "Docker install 方法")
 2. Dockerfileのyour usernameに自身のユーザーネームを設定
