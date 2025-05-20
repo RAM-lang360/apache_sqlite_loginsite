@@ -29,10 +29,14 @@ Docker仮想環境でのApacheによるセキュアなログインサイト。
 3. 下記のコマンドを実行  
 ``` Linux
 docker image build -t apache_sql:latest .
-
-docker container run -d -p 任意のポート番号:80 --name apache_sql -v 絶対パス/src/:/var/www/html/ apache_sql:latest
+```
+```
+docker container run -d -p 8080:80 --name apache_sql -v 絶対パス/src/:/var/www/html/ apache_sql:latest
 ```
 4. 指定ポートにアクセス
+http:localhost:8080//login.html
+
+5. loginやsigninが可能
 
 ### DBベース情報の確認方法
 1. 下記のコマンドを実行しコンテナ内に入る
@@ -43,6 +47,12 @@ docker container run -d -p 任意のポート番号:80 --name apache_sql -v 絶�
 ```
 sqlite3 back_end/db/id.db
 ```
+   id.dbで個人情報が更新されているか確認する
+
+```
+SELECT * FROM user
+```
+
 
 ## 設計
 フロントエンドにはログイン、サインイン機能を搭載する。  バックエンドにはログイン、サインイン、DB操作を扱う。ログイン、クッキーが認証された場合、ユーザーページにリダイレクトする。
